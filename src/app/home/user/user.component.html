@@ -1,0 +1,23 @@
+<h1>User Page</h1>
+
+ <main>
+    <ol class="gradient-list">
+        <li *ngFor = "let user of users" [class.selected]="user === SelectedUser" (click)="onSelect(user)">
+            {{user.Name}}
+         </li>
+    </ol>
+    <input [(ngModel)]="UName" placeholder="Name">
+    {{UName}}
+</main>
+        <div *ngIf="SelectedUser" Id="UserInfo">
+            <h2>{{SelectedUser.Name | uppercase}} Details</h2>
+            <div class="DetailInfo"><span>Id: </span>{{SelectedUser.Id}}</div>
+            <div class="DetailInfo"><span>Email: </span>{{SelectedUser.Email}}</div>
+            <div class="DetailInfo"><span>Department: </span>{{SelectedUser.Department}}</div>
+            <div class="DetailInfo"><span>Job Title: </span>{{SelectedUser.JobTitle}}</div>
+        </div>
+
+        <button (click)="addMessage()">Add Message</button>
+        <button (click)="clearMessage()">Clear Messages</button>
+<app-registration></app-registration>
+

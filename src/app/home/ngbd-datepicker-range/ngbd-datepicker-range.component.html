@@ -1,0 +1,27 @@
+
+
+<h1><ngb-progressbar class="progressBar" type="dark" textType="white" [value]="90" [showValue]="false">{{ leaveService.Total_Days }} days left</ngb-progressbar></h1>
+
+<ngb-datepicker class="Calendar"  #dp (dateSelect)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden">
+</ngb-datepicker>
+
+<ng-template #t let-date let-focused="focused">
+  <span class="custom-day"
+        [class.focused]="focused"
+        [class.range]="isRange(date)"
+        [class.faded]="isHovered(date) || isInside(date)"
+        (mouseenter)="hoveredDate = date"
+        (mouseleave)="hoveredDate = null">
+        {{ date.day }}
+  </span>
+</ng-template>
+
+<hr>
+
+<div ng-app="myApp">
+  <div  ng-controller="AppCtrl">
+  <textarea id="TextArea" placeholder="Description"></textarea>
+    </div>
+  </div>
+
+  <button (click)="sendToService()" style="float: right;"type="button" class="btn btn-dark" routerLink="/leave">Request a leave</button>

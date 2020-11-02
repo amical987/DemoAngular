@@ -1,0 +1,65 @@
+<body>
+    <div class="container-fluid" style="color:rgb(25, 118, 211);">
+        <h2>{{ user.name }}</h2>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <label>Employee ID:
+                    <br>
+                    <input type="text" name="ID" value="{{ user.id }}" readonly="readonly" size="35" />
+                </label>
+                <br>
+                <label>Select type of leave:
+                    <br>
+                    <select id="annual_leave" [(ngModel)]="leave.leaveType" style="width:293px; height: 30px;">
+                        <br>
+                        <option value="Annual Leave">Annual Leave</option>
+                        <option value="Special Leave">Special Leave</option>
+                        <option value="Sick Leave">Sick Leave</option>
+                    </select>
+                </label>
+                <br>
+                <label *ngIf="leave.leaveType == 'Special Leave'">Select type of special leave:
+                    <br>
+                    <select id="special_leaves" [(ngModel)]="leave.specialType" style="width:293px; height: 30px;">
+                        <br>
+                        <option value="Birth of child">Birth of child</option>
+                        <option value="Marriage">Marriage</option>
+                        <option value="Relocation">Relocation</option>
+                    </select>
+                </label>
+            </div>
+            <div class="col-md-6">
+                <label>Selected date:
+                <br>
+                <input type="text" name="Days"
+                    value="from ({{ leaveService.from | date }}) to ({{ leaveService.to | date }})" readonly="readonly"
+                    size="35" />
+                </label>
+                <br>
+                <label>Annual leave days left:
+                <br>
+                <input type="text" name="Days" value="{{ leave.totalDays }}" readonly="readonly" size="35" />
+            </label>
+                <br>
+                <label *ngIf="leave.leaveType == 'Annual Leave' || leave.leaveType == 'Sick Leave'">Number of selected
+                    days:
+                    <br>
+                    <input type="text" value="{{onSelectedLeave()}}" readonly="readonly" size="35" />
+                </label>
+                <label *ngIf="leave.leaveType == 'Special Leave'">Number of selected days:
+                    <br>
+                    <input type="text" value="{{onSelectedSpecialLeave()}}" readonly="readonly" size="35" />
+                </label>
+                <br>
+                <label *ngIf="leave.leaveType == 'Sick Leave'">Description:
+                    <br>
+                    <input type="text" name="Days" value="{{leave.description}}" size="35" style="height:100px;" />
+                </label>
+                <br>
+                <button class="btn btn-primary btn-space" (click)="addNewLeave()">Submit</button>
+                <button class="btn btn-danger" style="margin:5px;" routerLink="/home">Cancel</button>
+            </div>
+        </div>
+    </div>
+</body>

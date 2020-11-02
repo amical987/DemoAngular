@@ -1,0 +1,21 @@
+<body>
+
+<div class="d-flex flex-row">
+
+  <div class="container">
+    <h2><span style="color:rgb(131, 199, 26);">Welcome</span>, {{user.name}} </h2>
+    <div class="card" style="width:410px">
+      <img class="card-img-top" src="../../assets/images/avatar1.png" alt="Card image" style="width:100%">
+      <div class="card-body">
+        <h4 class="card-title">{{user.department}} | {{user.jobTitle}}</h4>
+        <p class="card-text">{{user.email}}</p>
+        <a href="#" class="btn btn-dark stretched-link">Edit Profile</a>
+      </div>
+    </div>
+    <br>
+  </div>
+  <app-calendar class = "CalendarComponent"></app-calendar>
+  
+</div>
+
+</body>

@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+}
+
+#MainText{
+    padding-top: 2%;
+    color: rgb(131, 199, 26);
+    text-align: center;
+}
+.Logo{
+    Margin-top:1%;
+    position: fixed;
+    left:5%;
+    
+}
+#LoginForm{
+    position: fixed;
+    left: 65%;
+    top:30%;
+    width:350px;
+}
+#Mainbody{
+    margin:0;
+    padding:0;
+    color: white;
+}
+.LoginInputs {
+    width: 100%;
+    padding: 4%;
+    text-align: center;
+    margin-top: 2%;
+    border-color: rgb(131, 199, 26);
+    resize: none;
+  }
+
+.LoginButton{
+    width: 109%;
+    padding: 4%;
+    margin-top: 2%;
+    background-color: rgb(25, 118, 211);
+    font-weight: bold;
+    color: white;
+    border: none;
+}
+.bg{
+    width:100%;
+    min-width:100%;
+    max-width:100;
+    position:absolute;
+    z-index:-10;
+}

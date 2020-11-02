@@ -1,0 +1,16 @@
+
+<div Id = MainBody *ngIf ="showLogin">
+    <img class="bg" src="../../assets/images/background.jpg">
+    <h1 Id = "MainText">Please Login to Infinity Mesh LeaveApp</h1>
+    <img class = "Logo" src="../../assets/images/infinity-mesh-logo.png" width="600" height="400">
+    <h1>{{EmailAdress}}</h1>
+    
+    <form Id="LoginForm">
+        <input class="LoginInputs" #_email type="text" name="_email" placeholder="Email">
+        <input class ="LoginInputs" placeholder="Password"> 
+        <button class="LoginButton" (click)="Login(_email.value)" type="button">Login</button>
+        <p style = "color : rgb(131, 199, 26); margin-top: 2%; text-align: center;">Don't have an account? Register here!</p>
+    </form>
+
+</div>
+<app-home *ngIf = "ShowHome"></app-home>
