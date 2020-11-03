@@ -9,10 +9,11 @@
                     <input type="text" name="ID" value="{{ user.id }}" readonly="readonly" size="35" />
                 </label>
                 <br>
-                <label>Select type of leave:
+                <label>Type of leave:
                     <br>
                     <select id="annual_leave" [(ngModel)]="leave.leaveType" style="width:293px; height: 30px;">
                         <br>
+                        <option value="" disabled>Please select</option>
                         <option value="Annual Leave">Annual Leave</option>
                         <option value="Special Leave">Special Leave</option>
                         <option value="Sick Leave">Sick Leave</option>
@@ -23,6 +24,7 @@
                     <br>
                     <select id="special_leaves" [(ngModel)]="leave.specialType" style="width:293px; height: 30px;">
                         <br>
+                        <option value="" disabled>Please select</option>
                         <option value="Birth of child">Birth of child</option>
                         <option value="Marriage">Marriage</option>
                         <option value="Relocation">Relocation</option>

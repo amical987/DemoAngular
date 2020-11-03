@@ -1,5 +1,4 @@
-import { Component,OnInit } from '@angular/core';
-import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
+import { Component,OnInit } from '@angular/core';;
 import { User } from '../home/user/UserModel';
 import { LeaveService } from '../leave.service';
 import { UserService } from '../user.service';
