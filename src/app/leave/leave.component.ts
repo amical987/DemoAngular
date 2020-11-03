@@ -1,4 +1,5 @@
 import { Component,OnInit } from '@angular/core';
+import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { User } from '../home/user/UserModel';
 import { LeaveService } from '../leave.service';
 import { UserService } from '../user.service';
@@ -24,27 +25,33 @@ export class LeaveComponent implements OnInit {
   startDate: number;
   Total_Days_Applied: number;
   Total_Days_Applied_Special: number;
+  disabled = false;
 
-  leaves: Leave[] = [];
+  leaves: Leave[];
   leave: Leave = {
     id: 1,
     leaveType: '',
     specialType: '',
     description: '',
-    totalDays: 25
+    totalDays: 25,
+    startDate: this.leaveService.from,
+    endDate: this.leaveService.to,
+    status: 'Sent for Approval'
   }
 
   ngOnInit(): void {
+    this.leaveService.getLeaves().subscribe(leaves => this.leaves = leaves);
     this.userService.getUser(2).subscribe(user => this.user = user);
     this.endDate = this.leaveService.to.getTime();
-    this.startDate = this.leaveService.from.getTime();  
-  }
+    this.startDate = this.leaveService.from.getTime();
+    }
 
   addNewLeave(){
     this.updateDays();
     this.leaveService.addLeave(this.leave).subscribe(leave => {
       this.leaves.push(leave);
     });
+    this.disabled = true;
   }
 
   updateDays()

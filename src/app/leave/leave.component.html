@@ -1,5 +1,5 @@
 <body>
-    <div class="container-fluid" style="color:rgb(25, 118, 211);">
+    <div class="container-fluid">
         <h2>{{ user.name }}</h2>
         <hr>
         <div class="row">
@@ -31,16 +31,16 @@
             </div>
             <div class="col-md-6">
                 <label>Selected date:
-                <br>
-                <input type="text" name="Days"
-                    value="from ({{ leaveService.from | date }}) to ({{ leaveService.to | date }})" readonly="readonly"
-                    size="35" />
+                    <br>
+                    <input type="text" name="Days"
+                        value="from ({{ leaveService.from | date }}) to ({{ leaveService.to | date }})"
+                        readonly="readonly" size="35" />
                 </label>
                 <br>
                 <label>Annual leave days left:
-                <br>
-                <input type="text" name="Days" value="{{ leave.totalDays }}" readonly="readonly" size="35" />
-            </label>
+                    <br>
+                    <input type="text" name="Days" value="{{ leave.totalDays }}" readonly="readonly" size="35" />
+                </label>
                 <br>
                 <label *ngIf="leave.leaveType == 'Annual Leave' || leave.leaveType == 'Sick Leave'">Number of selected
                     days:
@@ -52,14 +52,36 @@
                     <input type="text" value="{{onSelectedSpecialLeave()}}" readonly="readonly" size="35" />
                 </label>
                 <br>
-                <label *ngIf="leave.leaveType == 'Sick Leave'">Description:
+                <label *ngIf="leave.leaveType == 'Sick Leave' || leave.leaveType == 'Special Leave'">Description:
                     <br>
                     <input type="text" name="Days" value="{{leave.description}}" size="35" style="height:100px;" />
                 </label>
                 <br>
-                <button class="btn btn-primary btn-space" (click)="addNewLeave()">Submit</button>
+                <button class="btn btn-primary btn-space" (click)="addNewLeave()" [disabled]="disabled">Submit</button>
                 <button class="btn btn-danger" style="margin:5px;" routerLink="/home">Cancel</button>
             </div>
         </div>
     </div>
+</body>
+
+<body>
+
+    <h2>History of Leaves</h2>
+
+    <table>
+        <tr>
+            <th>Leave type</th>
+            <th>Days</th>
+            <th>Date range</th>
+            <th>Status</th>
+        </tr>
+        <tr *ngFor="let leave of leaves">
+            <td *ngIf="leave.leaveType == 'Annual Leave' || leave.leaveType == 'Sick Leave'">{{ leave.leaveType }}</td>
+            <td *ngIf="leave.leaveType == 'Special Leave'">{{ leave.leaveType }} ({{ (leave.specialType) }})</td>
+            <td>{{ 25-leave.totalDays }}</td>
+            <td>{{ leave.startDate | date}} - {{ leave.endDate | date}}</td>
+            <td>{{ leave.status }}</td>
+        </tr>
+    </table>
+
 </body>
