@@ -71,14 +71,15 @@
     <table>
         <tr>
             <th>Leave type</th>
+            <th>Special type</th>
             <th>Days</th>
             <th>Date range</th>
             <th>Status</th>
         </tr>
         <tr *ngFor="let leave of leaves">
-            <td *ngIf="leave.leaveType == 'Annual Leave' || leave.leaveType == 'Sick Leave'">{{ leave.leaveType }}</td>
-            <td *ngIf="leave.leaveType == 'Special Leave'">{{ leave.leaveType }} ({{ (leave.specialType) }})</td>
-            <td>{{ 25-leave.totalDays }}</td>
+            <td>{{ leave.leaveType }}</td>
+            <td>{{ leave.specialType }}</td>
+            <td>{{ Total_Days_Applied }}</td>
             <td>{{ leave.startDate | date}} - {{ leave.endDate | date}}</td>
             <td>{{ leave.status }}</td>
         </tr>

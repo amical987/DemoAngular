@@ -57,6 +57,11 @@ export class LeaveComponent implements OnInit {
   updateDays()
   {
     this.leave.totalDays = this.leaveService.calculateRemainingDays(this.Total_Days_Applied);
+    if(!this.Total_Days_Applied)
+    {
+      this.leave.totalDays = 25;
+      this.Total_Days_Applied = this. Total_Days_Applied_Special;
+    }
   }
 
   onSelectedLeave() {
